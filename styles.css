@@ -1,0 +1,62 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: repeating-linear-gradient(
+        45deg,           /* Ângulo das listras */
+        #641111,         /* Cor da listra clara */
+        #5a1414 10px,    /* Largura da listra clara */
+        #000000 10px,    /* Cor da listra escura */
+        #000000 20px     /* Largura da listra escura */
+    );
+    font-family: Arial, sans-serif;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    grid-gap: 10px;
+}
+
+.card {
+    width: 80px;
+    height: 120px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.card-front {
+    background-color: #ecf0f1;
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(180deg); /* Esconde a frente inicialmente */
+}
+
+.card-back {
+    background-color: #9c1616;
+}
